@@ -1,0 +1,26 @@
+version: '3.8' # Specify the docker-compose version
+
+services:
+  n8n:
+    image: n8nio/n8n # --- 指定 n8n 映像檔 ---
+    container_name: my-n8n # Set the container name
+    ports:
+      - "5678:5678" # --- 端口映射 ---
+    volumes:
+      - n8n_data:/home/node/.n8n # --- 數據卷 ---
+    networks:
+      - n8n_network # --- 指定網絡 ---
+    environment:
+      # --- 加入所有需要的環境變數 ---
+      - N8N_PROTOCOL=https
+      - N8N_HOST=linebot-app-7a71b6675026.herokuapp.com
+      - WEBHOOK_URL=https://linebot-app-7a71b6675026.herokuapp.com/callback
+      - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
+      # - GENERIC_TIMEZONE=Asia/Taipei # 可選：設定時區
+    restart: unless-stopped # Optional: Add a restart policy
+
+volumes:
+  n8n_data: {} # Define the named volume used by the service
+
+networks:
+  n8n_network: {} # Define the custom network used by the service

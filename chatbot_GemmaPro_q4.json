@@ -1,0 +1,97 @@
+{
+  "name": "My workflow raw",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "=gemmapro:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        560
+      ],
+      "id": "f1d7fbb5-cba7-47b0-8c7d-46353a753332",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "fNSJ7JVHWgME33Ws",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -360,
+        300
+      ],
+      "id": "50b34b8d-74a1-45d6-b0ae-e0bc73a878ca",
+      "name": "When chat message received",
+      "webhookId": "b8038ede-ccc6-44a6-981d-41cc8a9748f8"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=回應這個訊息：{{ $json.chatInput }}\n以繁體中文，純文字輸出，不要帶 HTML。",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        -120,
+        300
+      ],
+      "id": "32210494-9aa4-4059-bb5a-15d936e267ff",
+      "name": "AI 語言模型1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI 語言模型1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI 語言模型1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI 語言模型1": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "dfeac029-6ed9-43fa-be35-d8845184d755",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3716c0c71ba92c4cc7d73b567863f80b6c6893d128921b084a642445880d2d52"
+  },
+  "id": "hxNAKdhWl8WV78tb",
+  "tags": []
+}
