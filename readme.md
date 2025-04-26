@@ -11,7 +11,7 @@
 
 1. **雙擊run.bat** (此腳本會使用 `docker-compose.yml` 檔案來啟動並配置 **n8n工作流程工具的 Docker 容器**。並利用Dockerfile來建立`gemmapro-ollama-container` 的 **Ollama Docker 容器**，並將其內部 11434 端口映射到 Windows 主機的 11434 端口。)
 2. 進入http://localhost:5678/home/workflows
-3. 首次使用可能會要求註冊帳戶或登入。請依照介面指示完成 (請用免費版本)。
+3. 首次使用n8n可能會要求註冊帳戶或登入。請依照介面指示完成 (請用免費版本)。
 4. 導入chatbot_GemmaPro_q4.json
 5. 確定ollama accnout的Base URL 為 http://host.docker.internal:11434
 * **重要：** 在這些 Ollama 節點的設定中，將 `Base URL` 或 `Ollama API Endpoint` (名稱可能因平台而異) 設定為 `http://host.docker.internal:11434`
