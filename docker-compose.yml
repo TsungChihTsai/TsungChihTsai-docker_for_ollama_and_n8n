@@ -13,8 +13,8 @@ services:
     environment:
       # --- 加入所有需要的環境變數 ---
       - N8N_PROTOCOL=https
-      - N8N_HOST=linebot-app-7a71b6675026.herokuapp.com
-      - WEBHOOK_URL=https://linebot-app-7a71b6675026.herokuapp.com/callback
+      - N8N_HOST=""
+      - WEBHOOK_URL=""
       - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
       # - GENERIC_TIMEZONE=Asia/Taipei # 可選：設定時區
     restart: unless-stopped # Optional: Add a restart policy
